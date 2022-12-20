@@ -1,5 +1,5 @@
-// These styles apply to every route in the application
-import "./globals.css";
+import "./globals.css"; // These styles apply to every route in the application
+import Head from "./head";
 
 export default function RootLayout({
   children,
@@ -8,6 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head />
       <body>{children}</body>
     </html>
   );
