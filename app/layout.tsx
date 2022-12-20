@@ -3,6 +3,8 @@ import Head from "./head";
 import { Inter } from "@next/font/google";
 const inter = Inter({
   variable: "--font-inter",
+  weight: ["400", "700"], // [normal, bold]
+  subsets: ["latin"],
 });
 
 export default function RootLayout({
