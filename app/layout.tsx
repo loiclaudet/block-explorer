@@ -1,5 +1,5 @@
-import "./globals.css"; // These styles apply to every route in the application
-import Head from "./head";
+import "app/globals.css"; // These styles apply to every route in the application
+import Head from "app/head";
 import { Inter } from "@next/font/google";
 const inter = Inter({
   variable: "--font-inter",
