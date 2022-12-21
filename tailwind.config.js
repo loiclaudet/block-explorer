@@ -1,10 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "!./node_modules", // https://github.com/vercel/next.js/issues/43878#issuecomment-1344883913
+  ],
   theme: {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)"],
+      },
+      boxShadow: {
+        dark: "6px 6px 0px -2px var(--color-dark-100)",
+        warning: "6px 6px 0px -2px var(--color-warning-100)",
+      },
+      dropShadow: {
+        dark: "2px 6px 0px var(--color-dark-100)",
       },
       colors: {
         dark: {
