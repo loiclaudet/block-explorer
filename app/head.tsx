@@ -3,6 +3,7 @@ export default function Head() {
     <>
       <title>Block Explorer</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="Ethereum block explorer" />
       <link rel="icon" href="/favicon.ico" />
     </>
   );
