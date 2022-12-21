@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+	--color-dark-100: hsla(0,0%,0%,1);
+	--color-white-cream-100: hsla(60,100%,99.4%,1);
+	--color-pink-100: hsla(300,100%,75.1%,1);
+	--color-pink-200: hsla(300,100%,88.8%,1);
+	--color-purple-100: hsla(249,100%,70%,1);
+	--color-purple-200: hsla(249,100%,84.9%,1);
+	--color-night-100: hsla(217,100%,70%,1);
+	--color-night-200: hsla(217,100%,81.4%,1);
+	--color-sky-100: hsla(185,100%,70%,1);
+	--color-sky-200: hsla(185,100%,80.4%,1);
+	--color-mint-100: hsla(110,100%,70%,1);
+	--color-mint-200: hsla(110,100%,87.5%,1);
+	--color-sun-100: hsla(62,100%,70%,1);
+	--color-sun-200: hsla(62,100%,85.7%,1);
+	--color-warning-100: hsla(33,100%,70%,1);
+	--color-warning-200: hsla(33,100%,82.4%,1);
+	--color-danger-100: hsla(0,100%,70%,1);
+	--color-danger-200: hsla(0,100%,83.9%,1);
+}
+
 /* https://www.joshwcomeau.com/css/custom-css-reset/ */
 /*
   1. Use a more-intuitive box-sizing model.
