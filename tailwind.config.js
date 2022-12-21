@@ -22,7 +22,7 @@ module.exports = {
           100: "var(--color-dark-100)",
         },
         "white-cream": {
-          100: "var(--color-white-100)",
+          100: "var(--color-white-cream-100)",
         },
         pink: {
           100: "var(--color-pink-100)",
