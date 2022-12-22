@@ -8,14 +8,14 @@ export default async function Home() {
         title="blocks"
         SVGIcon="block"
         value={1234}
-        link="/"
+        contentLink="/"
       />
       <Overview
         entity="transaction"
         title="transactions"
         SVGIcon="transaction"
         value={991234}
-        link="/"
+        contentLink="/"
       />
       <Overview
         entity="asset"
