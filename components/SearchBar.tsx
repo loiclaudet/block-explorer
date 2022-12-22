@@ -25,9 +25,9 @@ export default function SearchBar() {
           <path
             d="m20 20-1.6-1.6m-6.8.8a7.601 7.601 0 1 0 0-15.202 7.601 7.601 0 0 0 0 15.202v0Z"
             stroke="#000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </button>

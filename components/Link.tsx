@@ -9,7 +9,7 @@ export default function Link({ href, children }: LinkProps) {
   return (
     <NextLink
       href={href}
-      className="text-night-100 font-semibold text-sm hover:underline"
+      className="text-night-100 font-semibold text-sm hover:underline focus:underline"
     >
       {children}
     </NextLink>
