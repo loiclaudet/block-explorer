@@ -40,7 +40,9 @@ export default function Overview({
             src={`/icons/${SVGIcon}.svg`}
           />
         )}
-        <h2 className="font-semibold capitalize">{title ?? entity}</h2>
+        <h2 className="font-semibold first-letter:uppercase">
+          {title ?? entity}
+        </h2>
       </header>
       <div className="flex p-3 items-center justify-between bg-white-cream-100 font-semibold">
         <p className="text-2xl font-semibold">{value}</p>
@@ -52,12 +54,15 @@ export default function Overview({
 
 function getHeaderBackgroundColor(entity: Entity) {
   const color = EntityToColor.get(entity);
-  if (!color) {
-    console.error(
-      `No color found for entity: ${entity}. Fallback with Sun color.`
-    );
-    return `bg-sun-200`;
+  // Switch case is used here to deal with TailwindCSS that doesn't support dynamic class names
+  switch (color) {
+    case "sun":
+      return `bg-sun-200`;
+    case "purple":
+      return `bg-purple-200`;
+    case "danger":
+      return `bg-danger-200`;
+    default:
+      return `bg-sun-200`;
   }
-
-  return `bg-${color}-200`;
 }
