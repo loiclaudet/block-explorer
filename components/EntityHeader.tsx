@@ -1,25 +1,23 @@
 import Image from "next/image";
-import { Color, Entity } from "types";
+import { Color, Entity, ILink } from "types";
 import Link from "./Link";
 
 const EntityToColor = new Map<Entity, Color>([
   ["block", "purple"],
   ["transaction", "danger"],
   ["address", "sun"],
-  ["asset", "sun"],
+  ["ether", "sun"],
 ]);
 
 interface EntityHeaderProps {
   entity: Entity;
   title?: string;
-  SVGIcon?: string;
-  link?: string;
+  link?: ILink;
 }
 
 export default function EntityHeader({
   entity,
   title,
-  SVGIcon,
   link,
 }: EntityHeaderProps) {
   return (
@@ -29,19 +27,17 @@ export default function EntityHeader({
       )}`}
     >
       <div className="flex items-center gap-3">
-        {SVGIcon && (
-          <Image
-            width={16}
-            height={16}
-            alt={entity}
-            src={`/icons/${SVGIcon}.svg`}
-          />
-        )}
+        <Image
+          width={20}
+          height={20}
+          alt={entity}
+          src={`/icons/${entity}.svg`}
+        />
         <h2 className="font-semibold first-letter:uppercase">
           {title ?? entity}
         </h2>
       </div>
-      {link && <Link href={link}>{`View all ${title ?? entity} →`}</Link>}
+      {link && <Link href={link.href}>{link.text}</Link>}
     </header>
   );
 }
