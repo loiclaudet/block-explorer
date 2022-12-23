@@ -1,6 +1,7 @@
 import { getLatestBlock } from "libs/alchemy";
 import { getEthPrice } from "libs/ethPrice";
 import Overview from "./Overview";
+import OverviewsSkeleton from "./OverviewsSkeleton";
 
 async function getOverviewsData() {
   const [ethPrice, latestBlock] = await Promise.all([
@@ -18,7 +19,12 @@ async function getOverviewsData() {
 }
 
 export default async function Overviews() {
-  const { ethPrice, latestBlock } = await getOverviewsData();
+  try {
+    var { ethPrice, latestBlock } = await getOverviewsData();
+  } catch (e) {
+    console.error(e);
+    return <OverviewsSkeleton status="error" />;
+  }
 
   return (
     <div className="flex gap-12">
