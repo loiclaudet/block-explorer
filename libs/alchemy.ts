@@ -5,10 +5,20 @@ const settings = {
   network: Network.ETH_MAINNET,
 };
 
-export const alchemy = new Alchemy(settings);
+const alchemy = new Alchemy(settings);
 
 export async function getLatestBlock() {
-  const latestBlockNumber = await alchemy.core.getBlockNumber();
-  const latestBlock = await alchemy.core.getBlock(latestBlockNumber);
+  const latestBlockTag = await alchemy.core.getBlockNumber();
+  const latestBlock = await alchemy.core.getBlock(latestBlockTag);
   return latestBlock;
+}
+
+export async function getBlock(blockHashOrBlockTag: number | string) {
+  const block = await alchemy.core.getBlock(blockHashOrBlockTag);
+  return block;
+}
+
+export async function getTransaction(transactionHash: string) {
+  const transaction = await alchemy.core.getTransaction(transactionHash);
+  return transaction;
 }
