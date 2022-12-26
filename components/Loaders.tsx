@@ -1,3 +1,4 @@
+import React from "react";
 import ContentLoader from "react-content-loader";
 
 export function LineLoader({ quantity = 1 }: { quantity?: number }) {
@@ -14,7 +15,7 @@ export function LineLoader({ quantity = 1 }: { quantity?: number }) {
         .fill(0)
         .map((_, i) => {
           return (
-            <>
+            <React.Fragment key={i}>
               <rect
                 x="0"
                 y={i * (rectangleHeight * 1.6)}
@@ -31,7 +32,7 @@ export function LineLoader({ quantity = 1 }: { quantity?: number }) {
                 width="800"
                 height={rectangleHeight}
               />
-            </>
+            </React.Fragment>
           );
         })}
     </ContentLoader>
