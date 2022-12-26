@@ -1,8 +1,8 @@
 import { Utils } from "alchemy-sdk";
 import { getBlock } from "libs/alchemy";
-import Details from "./Details";
-import Link from "./Link";
-import Row from "./Row";
+import Details from "components/Details";
+import Link from "components/Link";
+import Row from "components/Row";
 
 interface BlockProps {
   hash: string;

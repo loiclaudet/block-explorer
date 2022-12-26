@@ -22,3 +22,8 @@ export async function getTransaction(transactionHash: string) {
   const transaction = await alchemy.core.getTransaction(transactionHash);
   return transaction;
 }
+
+export async function getBalance(addressHash: string) {
+  const balance = await alchemy.core.getBalance(addressHash);
+  return balance;
+}
