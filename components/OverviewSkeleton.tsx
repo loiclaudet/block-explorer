@@ -1,6 +1,6 @@
-import ContentLoader from "react-content-loader";
 import { Entity } from "types";
 import EntityHeader from "./EntityHeader";
+import { LineLoader } from "./Loaders";
 interface OverviewSkeletonProps {
   entity: Entity;
   title?: string;
@@ -25,14 +25,5 @@ export default function OverviewSkeleton({
         )}
       </div>
     </div>
-  );
-}
-
-function LineLoader() {
-  return (
-    <ContentLoader speed={1.2} width={400} height={32} viewBox="0 0 400 32">
-      <rect x="0" y="0" rx="5" ry="5" width="200" height="32" />
-      <rect x="300" y="4" rx="5" ry="5" width="140" height="24" />
-    </ContentLoader>
   );
 }
