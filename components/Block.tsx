@@ -5,13 +5,13 @@ import Link from "./Link";
 import Row from "./Row";
 
 interface BlockProps {
-  tagOrHash: string;
+  hash: string;
 }
 
-export default async function Block({ tagOrHash }: BlockProps) {
+export default async function Block({ hash }: BlockProps) {
   let block;
   try {
-    block = await getBlock(tagOrHash);
+    block = await getBlock(hash);
   } catch (e) {
     console.error(e);
     return (

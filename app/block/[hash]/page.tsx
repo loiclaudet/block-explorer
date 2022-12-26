@@ -5,12 +5,12 @@ import { Suspense } from "react";
 
 interface BlockPageProps {
   params: {
-    tagOrHash: string;
+    hash: string;
   };
 }
 
 export default async function BlockPage({ params }: BlockPageProps) {
-  const { tagOrHash } = params;
+  const { hash } = params;
   return (
     <>
       <Suspense
@@ -21,7 +21,7 @@ export default async function BlockPage({ params }: BlockPageProps) {
         }
       >
         {/* @ts-expect-error Server Component */}
-        <Block tagOrHash={tagOrHash} />
+        <Block hash={hash} />
       </Suspense>
     </>
   );
