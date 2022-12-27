@@ -27,3 +27,15 @@ export async function getBalance(addressHash: string) {
   const balance = await alchemy.core.getBalance(addressHash);
   return balance;
 }
+
+export async function getAddressTransactions(addressHash: string) {
+  // @ts-ignore
+  const transactions = await alchemy.core.getAssetTransfers({
+    fromBlock: "0x0",
+    fromAddress: addressHash,
+    category: ["external", "internal", "erc20", "erc721", "erc1155"],
+    maxCount: 10,
+  });
+
+  return transactions?.transfers?.length ? transactions.transfers : [];
+}
