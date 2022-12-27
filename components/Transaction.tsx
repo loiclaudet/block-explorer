@@ -30,9 +30,10 @@ export default async function Transaction({ hash }: TransactionProps) {
     <Details entity="transaction" title="Transaction details">
       <div className="grid grid-cols-[180px_1fr] gap-y-4">
         <Row label="value">
-          <p className="truncate font-normal text-sm">
-            {`${parseInt(tx.value._hex, 16)} Ξ`}
-          </p>
+          <p className="truncate font-normal text-sm">{`${Utils.formatUnits(
+            tx.value,
+            "ether"
+          )} Ξ`}</p>
         </Row>
         <Row label="from">
           <Link href={`/address/${tx.from}`}>{tx.from}</Link>
@@ -48,14 +49,15 @@ export default async function Transaction({ hash }: TransactionProps) {
           </Row>
         )}
         <Row label="gas limit">
-          <p className="truncate font-normal text-sm">
-            {parseInt(tx.gasLimit._hex, 16)}
-          </p>
+          <p className="truncate font-normal text-sm">{Number(tx.gasLimit)}</p>
         </Row>
         {tx.maxPriorityFeePerGas && (
           <Row label="maxPriorityFeePerGas">
             <p className="truncate font-normal text-sm">
-              {Utils.formatUnits(tx.maxPriorityFeePerGas?.toString(), "gwei")}
+              {`${Utils.formatUnits(
+                tx.maxPriorityFeePerGas?.toString(),
+                "gwei"
+              )} gwei`}
             </p>
           </Row>
         )}
