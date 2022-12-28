@@ -58,6 +58,15 @@ export default async function Block({ hash }: BlockProps) {
             </p>
           </Row>
         )}
+        {block.baseFeePerGas && (
+          <Row label="burnt Fees">
+            <p className="truncate font-normal text-sm">
+              {`🔥 ${Utils.formatEther(
+                block.baseFeePerGas.mul(block.gasUsed)
+              )} ETH`}
+            </p>
+          </Row>
+        )}
         <Row label="parentHash">
           <Link href={`/block/${block.parentHash}`}>{block.parentHash}</Link>
         </Row>
