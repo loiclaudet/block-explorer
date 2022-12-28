@@ -1,5 +1,5 @@
 import { Utils } from "alchemy-sdk";
-import { getBlock } from "libs/alchemy";
+import { getBlock } from "lib/alchemy";
 import Details from "components/Details";
 import Link from "components/Link";
 import Row from "components/Row";

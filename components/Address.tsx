@@ -1,5 +1,5 @@
 import { Utils } from "alchemy-sdk";
-import { getBalance } from "libs/alchemy";
+import { getBalance } from "lib/alchemy";
 import Details from "components/Details";
 import Row from "components/Row";
 
@@ -30,7 +30,7 @@ export default async function Address({ hash }: AddressProps) {
         </Row>
         <Row label="balance">
           <p className="truncate font-normal text-sm">
-            {`${Utils.formatEther(balance)} Ξ`}
+            {`${Number(Utils.formatEther(balance)).toFixed(6)} ETH`}
           </p>
         </Row>
       </div>

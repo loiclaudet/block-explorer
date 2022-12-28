@@ -1,7 +1,8 @@
-import { getAddressTransactions } from "libs/alchemy";
+import { getAddressTransactions } from "lib/alchemy";
 import Details from "components/Details";
 import Link from "components/Link";
 import type { AddressTransactions } from "types";
+import { shortenHash } from "lib/hash";
 
 interface AddressTransactionsProps {
   hash: string;
@@ -41,14 +42,26 @@ export default async function AddressTransactions({
       <div className="w-full grid grid-cols-[repeat(6,_1fr)] gap-y-4">
         <TransactionHead />
         {transactions.map((tx) => (
-          <TransactionBody key={tx.hash} {...tx} />
+          <TransactionBody
+            key={tx.hash}
+            routeAddressHash={hash}
+            transaction={tx}
+          />
         ))}
       </div>
     </Details>
   );
 }
 
-function TransactionBody(transaction: AddressTransactions) {
+interface TransactionBodyProps {
+  routeAddressHash: string;
+  transaction: AddressTransactions;
+}
+
+function TransactionBody({
+  routeAddressHash,
+  transaction,
+}: TransactionBodyProps) {
   return (
     <>
       <Link href={`/transaction/${transaction.hash}`}>
@@ -57,18 +70,17 @@ function TransactionBody(transaction: AddressTransactions) {
       <p className="truncate font-normal text-center text-sm">
         {Number(transaction.blockNum)}
       </p>
-      <Link href={`/address/${transaction.from}`}>
-        <p className="text-center">{shortenHash(transaction.from)}</p>
-      </Link>
-      {transaction.to ? (
-        <Link href={`/address/${transaction.to}`}>
-          <p className="text-center">{shortenHash(transaction.to)}</p>
-        </Link>
-      ) : (
-        <p className="truncate font-normal text-center text-sm">null</p>
-      )}
+      <AddressHash
+        routeAddressHash={routeAddressHash}
+        fromToHash={transaction.from}
+      />
+      <AddressHash
+        routeAddressHash={routeAddressHash}
+        fromToHash={transaction.to}
+      />
       <p className="truncate font-normal text-center text-sm">
-        {transaction.value?.toString()}
+        {/**@TODO use dynamic fixed value according to token metadata */}
+        {Number(transaction.value?.toFixed(6))}
       </p>
       <p className="truncate font-normal text-center text-sm">
         {transaction.asset}
@@ -77,8 +89,31 @@ function TransactionBody(transaction: AddressTransactions) {
   );
 }
 
-function shortenHash(hash: string) {
-  return `${hash.slice(0, 6)}...${hash.slice(-4)}`;
+interface AddressHashProps {
+  routeAddressHash: string;
+  fromToHash: string | null;
+}
+
+function AddressHash({ routeAddressHash, fromToHash }: AddressHashProps) {
+  if (!fromToHash) {
+    return <p className="truncate font-normal text-center text-sm">null</p>;
+  }
+
+  const isSender =
+    fromToHash.toLocaleLowerCase() === routeAddressHash.toLowerCase();
+  if (isSender) {
+    return (
+      <p className="truncate font-normal text-center text-sm">
+        {shortenHash(fromToHash)}
+      </p>
+    );
+  }
+
+  return (
+    <Link href={`/address/${fromToHash}`}>
+      <p className="text-center">{shortenHash(fromToHash)}</p>
+    </Link>
+  );
 }
 
 function TransactionHead() {

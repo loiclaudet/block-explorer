@@ -1,6 +1,6 @@
 import { Utils } from "alchemy-sdk";
 
-import { getTransaction } from "libs/alchemy";
+import { getTransaction } from "lib/alchemy";
 import Details from "components/Details";
 import Link from "components/Link";
 import Row from "components/Row";
@@ -33,7 +33,7 @@ export default async function Transaction({ hash }: TransactionProps) {
           <p className="truncate font-normal text-sm">{`${Utils.formatUnits(
             tx.value,
             "ether"
-          )} Ξ`}</p>
+          )} ETH`}</p>
         </Row>
         <Row label="from">
           <Link href={`/address/${tx.from}`}>{tx.from}</Link>

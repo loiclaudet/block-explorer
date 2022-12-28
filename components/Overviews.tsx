@@ -1,7 +1,7 @@
-import { getLatestBlock } from "libs/alchemy";
-import { getEthPrice } from "libs/ethPrice";
-import Overview from "./Overview";
-import OverviewsSkeleton from "./OverviewsSkeleton";
+import { getLatestBlock } from "lib/alchemy";
+import { getEthPrice } from "lib/ethPrice";
+import Overview from "components/Overview";
+import OverviewsSkeleton from "components/OverviewsSkeleton";
 
 async function getOverviewsData() {
   const [ethPrice, latestBlock] = await Promise.all([
