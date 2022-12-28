@@ -33,7 +33,7 @@ export default function EntityHeader({
           alt={entity}
           src={`/icons/${entity}.svg`}
         />
-        <h2 className="font-semibold first-letter:uppercase">
+        <h2 className="font-semibold first-letter:uppercase truncate">
           {title ?? entity}
         </h2>
       </div>

@@ -38,7 +38,7 @@ export default async function AddressTransactions({
       entity="transaction"
       title={`Address transactions (last ${transactions.length})`}
     >
-      <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr] gap-y-4">
+      <div className="w-full grid grid-cols-[repeat(6,_1fr)] gap-y-4">
         <TransactionHead />
         {transactions.map((tx) => (
           <TransactionBody key={tx.hash} {...tx} />
