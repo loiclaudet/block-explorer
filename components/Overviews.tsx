@@ -32,7 +32,10 @@ export default async function Overviews() {
         entity="block"
         title="Latest block number"
         value={latestBlock.number}
-        contentLink={{ href: `/block/${latestBlock.hash}`, text: "View block" }}
+        contentLink={{
+          href: `/block/${latestBlock.number}`,
+          text: "View block",
+        }}
       />
       <Overview
         entity="transaction"

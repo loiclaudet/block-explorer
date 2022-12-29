@@ -64,7 +64,7 @@ export default async function Transaction({ hash }: TransactionProps) {
         {tx.maxFeePerGas && (
           <Row label="maxFeePerGas">
             <p className="truncate font-normal text-sm">
-              {Utils.formatUnits(tx.maxFeePerGas?.toString(), "gwei")}
+              {`${Utils.formatUnits(tx.maxFeePerGas?.toString(), "gwei")} gwei`}
             </p>
           </Row>
         )}
@@ -78,7 +78,7 @@ export default async function Transaction({ hash }: TransactionProps) {
           <Link href={`/block/${tx.blockHash}`}>{tx.blockHash}</Link>
         </Row>
         <Row label="block number">
-          <Link href={`/block/${tx.blockHash}`}>{tx.blockNumber}</Link>
+          <Link href={`/block/${tx.blockNumber}`}>{tx.blockNumber}</Link>
         </Row>
       </div>
     </Details>

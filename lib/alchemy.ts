@@ -1,5 +1,6 @@
 import { Network, Alchemy, AssetTransfersCategory } from "alchemy-sdk";
 import { MAX_TX_COUNT } from "lib/constants";
+import { castBlockTag } from "lib/hash";
 
 const settings = {
   apiKey: process.env.ALCHEMY_API_KEY,
@@ -14,8 +15,9 @@ export async function getLatestBlock() {
   return latestBlock;
 }
 
-export async function getBlock(blockHashOrBlockTag: number | string) {
-  const block = await alchemy.core.getBlock(blockHashOrBlockTag);
+export async function getBlock(blockHashOrBlockNumber: string) {
+  const blockTag = castBlockTag(blockHashOrBlockNumber);
+  const block = await alchemy.core.getBlock(blockTag);
   return block;
 }
 
