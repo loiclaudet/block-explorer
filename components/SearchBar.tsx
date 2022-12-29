@@ -1,9 +1,11 @@
 "use client";
-
+import { useRouter } from "next/navigation";
+import { classifyEthereumHash } from "lib/hash";
 import { useState } from "react";
 
 export default function SearchBar() {
   const [value, setValue] = useState<string>("");
+  const router = useRouter();
 
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400";
   return (
@@ -12,10 +14,24 @@ export default function SearchBar() {
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Search for an address, transaction, or block hash"
+        placeholder="Search for an address, transaction hash, or block number"
         className={`outline-none p-4 h-12 flex-grow bg-white-100 ${placeholderStyle}`}
       />
-      <button className="outline-none w-12 h-12 flex justify-center items-center bg-mint-200 hover:bg-mint-100 focus:bg-mint-100 border-l-2 border-dark-100 transition-colors duration-500">
+      <button
+        onClick={() => {
+          const trimmedValue = value.trim();
+          if (trimmedValue.length < 0) {
+            return;
+          }
+          const hashType = classifyEthereumHash(trimmedValue);
+          if (hashType === "unknown") {
+            return;
+          }
+          setValue("");
+          router.push(`/${hashType}/${trimmedValue}`);
+        }}
+        className="outline-none w-12 h-12 flex justify-center items-center bg-mint-200 hover:bg-mint-100 focus:bg-mint-100 border-l-2 border-dark-100 transition-colors duration-500"
+      >
         <svg
           width="24"
           height="24"
